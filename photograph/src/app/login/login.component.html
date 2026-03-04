@@ -1,0 +1,19 @@
+<div class="login-container">
+    <div class="login-card">
+        <h2>Login</h2>
+        <div *ngIf="error()" class="error-message">{{ error() }}</div>
+        <form (ngSubmit)="handleSubmit()">
+            <div class="form-group">
+                <label>Enter Username</label>
+                <input type="text" [ngModel]="username()" (ngModelChange)="username.set($event)" name="username"
+                    required placeholder="Enter your username" />
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" [ngModel]="password()" (ngModelChange)="password.set($event)" name="password"
+                    required placeholder="Enter your password" />
+            </div>
+            <button type="submit" class="btn-login">Login</button>
+        </form>
+    </div>
+</div>

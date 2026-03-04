@@ -13,8 +13,8 @@ if command_exists docker && docker info >/dev/null 2>&1; then
     docker-compose up -d
     echo "✅ Backend and Database started in Docker."
     
-    echo "🚀 Starting Frontend..."
-    cd frontend && npm run dev
+    echo "🚀 Starting Angular frontend (photograph)..."
+    cd photograph && npm start
     exit 0
 fi
 
@@ -48,8 +48,8 @@ BACKEND_PID=$!
 echo "✅ Backend running on port 8080 (PID: $BACKEND_PID)"
 
 # Start Frontend
-echo "🚀 Starting Frontend..."
-cd ../frontend && npm run dev
+echo "🚀 Starting Angular frontend (photograph)..."
+cd ../photograph && npm start
 
 # Cleanup on exit
 trap "kill $BACKEND_PID" EXIT

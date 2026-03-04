@@ -20,7 +20,7 @@ php -S localhost:8080
 ### Step 3: Start Frontend Server
 Open a new terminal:
 ```bash
-cd frontend
+cd photograph
 npm install  # First time only
 npm run dev
 ```
@@ -137,7 +137,7 @@ This project uses PrimeVue components:
 ## 🔧 Customization
 
 ### Change API URL
-Edit `frontend/.env`:
+Edit `photograph/.env`:
 ```
 VITE_API_URL=http://your-api-url
 ```

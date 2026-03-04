@@ -15,7 +15,7 @@ php/
 ├── 📄 VUE3_CONCEPTS.md             # Complete Vue 3 concepts reference
 ├── 📄 setup.sh                     # Automated setup script
 │
-├── 📁 frontend/                    # Vue.js 3 Application
+├── 📁 photograph/                  # Angular Application
 │   ├── src/
 │   │   ├── 📁 components/         # Reusable components
 │   │   │   ├── MainLayout.vue     # Main layout with sidebar
@@ -147,7 +147,7 @@ chmod +x setup.sh
 cd backend && php -S localhost:8080
 
 # Start frontend (new terminal)
-cd frontend && npm run dev
+cd photograph && npm run dev
 ```
 
 ### Option 2: Manual Setup
@@ -161,7 +161,7 @@ cd backend
 php -S localhost:8080
 
 # 3. Start frontend (new terminal)
-cd frontend
+cd photograph
 npm install
 npm run dev
 

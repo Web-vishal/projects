@@ -53,7 +53,7 @@ A comprehensive full-stack user management system built with **Vue.js 3** (front
 
 ```
 php/
-├── frontend/                 # Vue.js 3 application
+├── photograph/               # Angular application
 │   ├── src/
 │   │   ├── components/      # Reusable components
 │   │   │   ├── MainLayout.vue
@@ -135,11 +135,11 @@ php -S localhost:8080
 
 The API will be available at `http://localhost:8080`
 
-### Frontend Setup
+### Photograph Setup
 
-1. Navigate to frontend directory:
+1. Navigate to photograph directory:
 ```bash
-cd frontend
+cd photograph
 ```
 
 2. Install dependencies:
@@ -268,8 +268,8 @@ The application is fully responsive and works on:
 ## 🚀 Building for Production
 
 ```bash
-# Frontend
-cd frontend
+# Photograph
+cd photograph
 npm run build
 
 # The built files will be in frontend/dist/
