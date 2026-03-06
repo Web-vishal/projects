@@ -5,7 +5,8 @@ import { AuthService } from '../auth.service';
 @Component({
     selector: 'app-dashboard',
     standalone: false,
-    templateUrl: './dashboard.component.html'
+    templateUrl: './dashboard.component.html',
+    styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
     private auth = inject(AuthService);
