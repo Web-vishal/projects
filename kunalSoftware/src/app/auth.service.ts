@@ -7,7 +7,7 @@ import { Observable, tap } from 'rxjs';
     providedIn: 'root'
 })
 export class AuthService {
-    private apiUrl = '/api'; // Adjust base URL as needed
+    private apiUrl = 'http://localhost:8080/api'; // Adjust base URL as needed
     isAuthenticated = signal(false);
     currentUser = signal<any>(null);
 

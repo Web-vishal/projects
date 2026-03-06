@@ -8,7 +8,7 @@ import { AuthService } from '../auth.service';
     selector: 'app-login',
     standalone: false,
     templateUrl: './login.component.html',
-    styleUrl: './login.component.css'
+    styleUrl: './login.component.scss'
 })
 export class LoginComponent {
     username = signal('');

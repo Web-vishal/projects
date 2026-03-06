@@ -1,8 +1,88 @@
-<div class="dashboard-container" *ngIf="user()">
-    <h2>Welcome, {{ user().full_name }}</h2>
-    <p>Type: {{ user().type }}</p>
-    <button (click)="handleLogout()" class="btn btn-danger">Logout</button>
+<p-menubar>
+    <ng-template pTemplate="start">
+        <div class="brand">
+            <i class="pi pi-camera dashboard-icon"></i>
+            <span class="brand-title">Studio Dashboard</span>
+        </div>
+        <a routerLink="/dashboard" routerLinkActive="active" class="nav-link">Dashboard</a>
+        <a routerLink="/face-grouping" routerLinkActive="active" class="nav-link">Group Photos</a>
+    </ng-template>
+    <ng-template pTemplate="end">
+        <div class="user-info" *ngIf="user()">
+            <span class="user-name">{{ user().full_name }}</span>
+            <p-button label="Logout" icon="pi pi-sign-out" (onClick)="handleLogout()" styleClass="p-button-text p-button-sm"></p-button>
+        </div>
+    </ng-template>
+</p-menubar>
+
+<div class="dashboard-shell" *ngIf="user(); else loadingTpl">
+    <!-- Stats cards -->
+    <div class="stats-grid">
+        <p-card *ngFor="let stat of stats" class="stat-card">
+            <ng-template pTemplate="title">
+                {{ stat.label }}
+            </ng-template>
+            <div class="stat-value">
+                {{ stat.value }}
+            </div>
+            <p-tag [severity]="stat.severity" [value]="stat.severity | titlecase"></p-tag>
+        </p-card>
+    </div>
+
+    <div class="content-grid">
+        <!-- Upcoming shoots -->
+        <p-card header="Upcoming Shoots" class="upcoming-card">
+            <p-table [value]="upcomingShoots" [responsiveLayout]="'scroll'">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Client</th>
+                        <th>Date &amp; Time</th>
+                        <th>Location</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-row>
+                    <tr>
+                        <td>{{ row.client }}</td>
+                        <td>{{ row.date }}</td>
+                        <td>{{ row.location }}</td>
+                        <td>{{ row.type }}</td>
+                        <td>
+                            <p-tag [value]="row.status"></p-tag>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </p-card>
+
+        <!-- Highlight galleries -->
+        <p-card header="Highlight Galleries" class="galleria-card">
+            <p-galleria
+                [value]="highlightImages"
+                [showThumbnails]="true"
+                [showIndicators]="false"
+                [circular]="true"
+                [autoPlay]="true"
+                [transitionInterval]="4000"
+                [containerStyle]="{ 'max-width': '500px', margin: '0 auto' }"
+            >
+                <ng-template let-item pTemplate="item">
+                    <img [src]="item.itemImageSrc" [alt]="item.alt" style="width: 100%; display: block; border-radius: 12px;" />
+                    <div class="galleria-caption">
+                        {{ item.title }}
+                    </div>
+                </ng-template>
+                <ng-template let-thumbnail pTemplate="thumbnail">
+                    <img [src]="thumbnail.thumbnailImageSrc" [alt]="thumbnail.alt" style="display: block;" />
+                </ng-template>
+            </p-galleria>
+        </p-card>
+    </div>
 </div>
-<div *ngIf="!user()">
-    Loading...
-</div>
+
+<ng-template #loadingTpl>
+    <div class="loading-state">
+        Loading dashboard...
+    </div>
+</ng-template>
